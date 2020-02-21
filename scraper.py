@@ -26,7 +26,6 @@ def process(fulllist):
             item_title = item.find("div", {"class":"title"}).text.strip()
             item_price = item.find("div", {"class":"listingBuyNowPrice"}).text.strip()
         except:
-            print("AHHHHHHHHHHHH")
             continue
         item_URL = "https://trademe.co.nz" + item["href"]
         # print(item_title, item_price, item_URL)
@@ -35,8 +34,11 @@ def process(fulllist):
                 break
         else:
             goodlist.append({"title" : item_title, "price" : item_price, "url" : item_URL})
+    return goodlist
 
+list1 = process(scrape("https://www.trademe.co.nz/gaming/playstation-4/consoles"))
+for item in list1:
+    print(item["title"], item["price"], item["url"])
 
-list1 = scrape("Trademe.co.nz")
 
 
