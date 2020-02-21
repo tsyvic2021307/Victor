@@ -31,9 +31,12 @@ def process(fulllist):
         item_URL = "https://trademe.co.nz" + item["href"]
         # print(item_title, item_price, item_URL)
         for item in goodlist:
-            if item[0] == item_title and item[1] == item_price:
+            if item["title"] == item_title and item["price"] == item_price:
                 break
         else:
-            if "ps4" in item_title.lower() or "playstation 4" in item_title.lower():
-                goodlist.append([item_title, item_price, item_URL])
+            goodlist.append({"title" : item_title, "price" : item_price, "url" : item_URL})
+
+
+list1 = scrape("Trademe.co.nz")
+
 
